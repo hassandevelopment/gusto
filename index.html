@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Jost:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="images/hero.webp">
 <style>
   :root {
     --bg:           #FFFFFF;
@@ -126,17 +125,6 @@
   .flourish {
     margin: 28px 0 32px;
     color: rgba(45,40,40,0.65);
-  }
-
-  /* ── Photo strip ── */
-  .photo-strip {
-    width: 100%;
-    max-width: 780px;
-    height: clamp(260px, 52vh, 520px);
-    background-image: url(images/hero.webp);
-    background-size: cover;
-    background-position: center 60%;
-    margin-bottom: 44px;
   }
 
   /* ── Phrase ── */
@@ -292,11 +280,6 @@
     .kicker { margin-bottom: 24px; }
     .flourish { margin: 22px 0 24px; }
 
-    .photo-strip {
-      height: clamp(220px, 52vw, 300px);
-      margin-bottom: 32px;
-    }
-
     .phrase { margin-bottom: 36px; }
 
     .cta-group {
@@ -355,8 +338,6 @@
         <circle cx="40" cy="6" r="0.9" fill="currentColor"/>
       </svg>
     </div>
-
-    <div class="photo-strip" role="img" aria-label="Gusto restaurant — wood-fired oven and fresh Italian dishes"></div>
 
     <p class="phrase">
       Wood-fired pizza, handmade pasta, and a quiet table in <em>The Park</em>.
