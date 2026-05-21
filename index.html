@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Gusto · Pizzeria Ristorante</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Gusto Pizzeria Ristorante — Wood-fired pizza, handmade pasta, and a quiet table in The Park. Janabiyah, Bahrain." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Jost:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/hero.webp">
+<style>
+  :root {
+    --bg:           #FFFFFF;
+    --ink:          #2D2828;
+    --text:         #685A5A;
+    --text-muted:   #9A8E8E;
+    --accent:       #C75D2C;
+    --accent-dark:  #A8481E;
+    --border:       rgba(45,40,40,0.14);
+    --font-ui:       'Manrope', system-ui, sans-serif;
+    --font-wordmark: 'Jost', system-ui, sans-serif;
+    --font-italic:   'Cormorant Garamond', Georgia, serif;
+    --ease-spring:   cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Topbar ── */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 36px;
+  }
+
+  .topbar .meta {
+    font-family: var(--font-italic);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text);
+    letter-spacing: 0.02em;
+  }
+
+  .topbar .meta a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s;
+  }
+
+  .topbar .meta a:hover { border-bottom-color: var(--text); }
+
+  .topbar .lang {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .topbar .lang span { cursor: pointer; transition: color .2s; }
+  .topbar .lang span:hover { color: var(--ink); }
+  .topbar .lang .active { color: var(--ink); }
+  .topbar .lang .sep { width: 1px; height: 10px; background: var(--border); }
+
+  /* ── Main ── */
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 24px 80px;
+  }
+
+  /* ── Kicker ── */
+  .kicker {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+  }
+
+  /* ── Wordmark ── */
+  .word {
+    font-family: var(--font-wordmark);
+    font-weight: 400;
+    font-size: clamp(72px, 14vw, 168px);
+    letter-spacing: 0.10em;
+    color: var(--ink);
+    line-height: 0.95;
+  }
+
+  /* ── Tagline ── */
+  .tag {
+    font-family: var(--font-italic);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(20px, 2.5vw, 30px);
+    color: var(--ink);
+    margin-top: 14px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Flourish ── */
+  .flourish {
+    margin: 28px 0 32px;
+    color: rgba(45,40,40,0.65);
+  }
+
+  /* ── Photo strip ── */
+  .photo-strip {
+    width: 100%;
+    max-width: 780px;
+    height: clamp(260px, 52vh, 520px);
+    background-image: url(images/hero.webp);
+    background-size: cover;
+    background-position: center 60%;
+    margin-bottom: 44px;
+  }
+
+  /* ── Phrase ── */
+  .phrase {
+    font-family: var(--font-italic);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(15px, 1.7vw, 19px);
+    color: var(--text);
+    max-width: 38ch;
+    line-height: 1.55;
+    margin: 0 auto 44px;
+  }
+
+  .phrase em {
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  /* ── Button group ── */
+  .cta-group {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* ── Shared button base ── */
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 38px;
+    font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background .25s var(--ease-spring),
+                transform .25s var(--ease-spring),
+                box-shadow .25s var(--ease-spring);
+  }
+
+  /* ── Order Now (accent) ── */
+  .cta.order {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 2px 0 rgba(0,0,0,0);
+  }
+
+  .cta.order:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px rgba(199,93,44,0.30);
+  }
+
+  .cta.order:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  /* ── View Menu (ink) ── */
+  .cta.menu {
+    background: var(--ink);
+    color: white;
+    box-shadow: 0 2px 0 rgba(0,0,0,0);
+  }
+
+  .cta.menu:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px rgba(199,93,44,0.28);
+  }
+
+  .cta.menu:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  .cta .arrow {
+    display: inline-block;
+    transition: transform .25s var(--ease-spring);
+  }
+
+  .cta:hover .arrow { transform: translateX(4px); }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 22px 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer .info {
+    font-family: var(--font-italic);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text);
+    letter-spacing: 0.01em;
+  }
+
+  footer .info .muted {
+    color: var(--text-muted);
+    margin-left: 4px;
+  }
+
+  footer .social {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  footer .social a {
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    transition: color .2s, border-color .2s;
+  }
+
+  footer .social a:hover {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+  }
+
+  footer .social .sep {
+    width: 1px;
+    height: 10px;
+    background: var(--border);
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .topbar { padding: 16px 20px; }
+    .topbar .meta { font-size: 12px; }
+
+    main { padding: 20px 20px 60px; }
+
+    .kicker { margin-bottom: 24px; }
+    .flourish { margin: 22px 0 24px; }
+
+    .photo-strip {
+      height: clamp(220px, 52vw, 300px);
+      margin-bottom: 32px;
+    }
+
+    .phrase { margin-bottom: 36px; }
+
+    .cta-group {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .cta {
+      padding: 16px 28px;
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      width: 100%;
+      justify-content: center;
+    }
+
+    footer {
+      padding: 18px 20px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .cta, .cta .arrow, .topbar .meta a, footer .social a {
+      transition: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="meta">
+      <a href="https://maps.google.com/?q=571+Road+7113,+Janabiyah,+Bahrain" target="_blank" rel="noopener">Janabiyah, Bahrain</a>
+    </div>
+    <div class="lang">
+      <span class="active">EN</span>
+      <span class="sep"></span>
+      <span>AR</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="kicker">Forno a Legna · Since 2018</div>
+
+    <h1 class="word">GUSTO</h1>
+    <div class="tag">pizzeria ristorante</div>
+
+    <div class="flourish" aria-hidden="true">
+      <svg width="140" height="20" viewBox="0 0 80 12" fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="round">
+        <path d="M2 6 L26 6"/>
+        <path d="M54 6 L78 6"/>
+        <path d="M30 6 C 32 4, 34 4, 36 6 C 38 8, 40 8, 40 6"/>
+        <path d="M50 6 C 48 4, 46 4, 44 6 C 42 8, 40 8, 40 6"/>
+        <circle cx="40" cy="6" r="0.9" fill="currentColor"/>
+      </svg>
+    </div>
+
+    <div class="photo-strip" role="img" aria-label="Gusto restaurant — wood-fired oven and fresh Italian dishes"></div>
+
+    <p class="phrase">
+      Wood-fired pizza, handmade pasta, and a quiet table in <em>The Park</em>.
+    </p>
+
+    <div class="cta-group">
+      <a class="cta order" href="#order">
+        <span>Order Now</span>
+      </a>
+      <a class="cta menu" href="#menu">
+        <span>View Menu</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="info">
+      The Park, 571 Rd 7113 · <span class="muted">Open until 11:30 PM</span>
+    </div>
+    <div class="social">
+      <a href="tel:+97317695556">+973 1769 5556</a>
+      <span class="sep"></span>
+      <a href="https://instagram.com/gusto_bahrain" target="_blank" rel="noopener">Instagram</a>
+      <span class="sep"></span>
+      <a href="https://maps.google.com/?q=571+Road+7113,+Janabiyah,+Bahrain" target="_blank" rel="noopener">Directions</a>
+    </div>
+  </footer>
+
+</body>
+</html>
